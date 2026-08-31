@@ -21,10 +21,10 @@ const FALLBACK_CREDITS = [
     path: "assets/models/hand-sanitizer/scene.gltf"
   },
   {
-    title: "Hospital Bed",
-    author: "loxfear",
+    title: "Medical Bed",
+    author: "benellis",
     license: "CC Attribution (CC-BY 4.0)",
-    url: "https://sketchfab.com/3d-models/hospital-bed-f8c13a19e84343e7b644c19f7b9488d3",
+    url: "https://sketchfab.com/3d-models/medical-bed-1c6a700978674aa7996b239362557c05",
     path: "assets/models/hospital-bed/scene.gltf"
   }
 ];

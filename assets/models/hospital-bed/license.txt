@@ -1,11 +1,11 @@
 Model Information:
-* title:	Hospital Bed
-* source:	https://sketchfab.com/3d-models/hospital-bed-f8c13a19e84343e7b644c19f7b9488d3
-* author:	loxfear (https://sketchfab.com/loxfear)
+* title:	Medical Bed
+* source:	https://sketchfab.com/3d-models/medical-bed-1c6a700978674aa7996b239362557c05
+* author:	benellis (https://sketchfab.com/benellis)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Hospital Bed" (https://sketchfab.com/3d-models/hospital-bed-f8c13a19e84343e7b644c19f7b9488d3) by loxfear (https://sketchfab.com/loxfear) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Medical Bed" (https://sketchfab.com/3d-models/medical-bed-1c6a700978674aa7996b239362557c05) by benellis (https://sketchfab.com/benellis) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

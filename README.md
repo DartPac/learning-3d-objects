@@ -101,7 +101,7 @@ CC-BY glTF, stored locally (no Sketchfab embeds):
 | --- | --- | --- | --- |
 | `assets/models/wheelchair/scene.gltf` | Wheelchair | Maxence Rouillet | CC-BY 4.0 |
 | `assets/models/hand-sanitizer/scene.gltf` | Hand-sanitizer | Aarondraws8 | CC-BY 4.0 |
-| `assets/models/hospital-bed/scene.gltf` | Hospital Bed | loxfear | CC-BY 4.0 |
+| `assets/models/hospital-bed/scene.gltf` | Medical Bed | benellis | CC-BY 4.0 |
 
 See `credits.json` and the in-activity **Credits** screen.
 
