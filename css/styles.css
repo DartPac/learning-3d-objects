@@ -527,3 +527,5 @@ a:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+#markers-3d { display: none; }

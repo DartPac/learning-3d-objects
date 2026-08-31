@@ -137,66 +137,6 @@ const OBJECTS = [
         pos2d: [78, 38]
       }
     ]
-  },
-  {
-    id: "heart",
-    title: "Anatomy heart",
-    kit: "Anatomy · placeholder",
-    ready: false,
-    modelPath: null,
-    prompt: "The heart model is not shipped yet. A stand-in is shown so 3D still works.",
-    intro: "This card is a placeholder. When the CC-BY heart model is added, chambers and vessels will be labeled. You can still inspect a simple stand-in or read the list.",
-    complete: "Placeholder reviewed. The labeled heart model is not in this package yet. Nothing was scored.",
-    hotspots: [
-      {
-        id: "chambers",
-        n: 1,
-        label: "Chambers",
-        list: "Read: chambers will be labeled later.",
-        coach: "Placeholder: left and right atria and ventricles will be hotspots when the model ships. No need to memorize from this stand-in.",
-        uvw: [0.45, 0.5, 0.5],
-        pos2d: [40, 48]
-      },
-      {
-        id: "vessels",
-        n: 2,
-        label: "Great vessels",
-        list: "Read: great vessels will be labeled later.",
-        coach: "Placeholder: aorta and pulmonary trunk will be labeled on the shipped model. This stand-in only keeps 3D working.",
-        uvw: [0.55, 0.82, 0.5],
-        pos2d: [58, 22]
-      }
-    ]
-  },
-  {
-    id: "glassware",
-    title: "Chemistry glassware",
-    kit: "Chemistry · placeholder",
-    ready: false,
-    modelPath: null,
-    prompt: "The glassware set is not shipped yet. A stand-in flask is shown so 3D still works.",
-    intro: "This card is a placeholder. When the CC-BY glassware model is added, beaker and flask parts will be labeled.",
-    complete: "Placeholder reviewed. The labeled glassware model is not in this package yet. Nothing was scored.",
-    hotspots: [
-      {
-        id: "flask",
-        n: 1,
-        label: "Flask body",
-        list: "Read: flask body will be labeled later.",
-        coach: "Placeholder: the shipped set will include an Erlenmeyer (or similar) flask. Volume markings will be a text label, not color alone.",
-        uvw: [0.5, 0.4, 0.5],
-        pos2d: [50, 58]
-      },
-      {
-        id: "neck",
-        n: 2,
-        label: "Neck and rim",
-        list: "Read: neck and rim will be labeled later.",
-        coach: "Placeholder: neck and rim are high-contact when pouring. They will be a hotspot on the shipped model.",
-        uvw: [0.5, 0.88, 0.5],
-        pos2d: [50, 18]
-      }
-    ]
   }
 ];
 
@@ -326,8 +266,6 @@ function standInFor(id) {
   if (id === "wheelchair") return standInWheelchair();
   if (id === "hand-sanitizer") return standInSanitizer();
   if (id === "hospital-bed") return standInBed();
-  if (id === "heart") return standInHeart();
-  if (id === "glassware") return standInGlass();
   return standInSanitizer();
 }
 
@@ -580,16 +518,8 @@ function renderDiagram(obj) {
 }
 
 function renderMarkers3d(obj) {
+  /* On-model numbered labels removed: coaching stays in the sidebar and list view. */
   els.markers3d.innerHTML = "";
-  obj.hotspots.forEach((h) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "marker";
-    b.setAttribute("data-hs", h.id);
-    b.setAttribute("aria-pressed", isNoted(obj, h) ? "true" : "false");
-    b.innerHTML = `<span class="marker-num">${h.n}</span><span class="marker-name">${h.label}</span>`;
-    els.markers3d.appendChild(b);
-  });
 }
 
 function disposeObject3D(root) {
@@ -694,7 +624,6 @@ function fitAndAnchor(obj, model) {
   Object.keys(pos).forEach((k) => {
     pos[k].y -= bottom;
   });
-  addAnchorSpheres(obj, pos);
   orbit.target.set(0, size2.y * 0.45, 0);
   orbit.dist = Math.max(2.4, size2.y * 2.4);
 }
@@ -926,7 +855,7 @@ function bindPointer() {
     pointerLocked = !!(document.pointerLockElement && (document.pointerLockElement === host || document.pointerLockElement === renderer?.domElement));
     els.kbdHelp.textContent = pointerLocked
       ? "Pointer locked. Move the mouse to orbit. Press Escape or double-click to unlock. Drag still works if lock is blocked."
-      : "Drag to orbit. Arrow keys or I J K L rotate. + / − zoom. Pointer lock is optional. Click a numbered hotspot, or press Enter or Space when it is focused.";
+      : "Drag to orbit. Arrow keys or I J K L rotate. + / − zoom. Pointer lock is optional. Use the coaching list on the right, or switch to List view.";
   });
 }
 
