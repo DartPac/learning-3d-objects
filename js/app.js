@@ -39,6 +39,7 @@ const OBJECTS = [
     prompt: "Find the high-touch points to disinfect before a transfer.",
     intro: "Walk around the chair. Open every numbered point. Handles, armrests, and wheel rims pick up oils and soil from many hands.",
     complete: "You noted every high-touch point on the wheelchair. Wipe handles, armrests, and rims before you use the chair. Nothing was scored.",
+    showModelLabels: true,
     hotspots: [
       {
         id: "handles",
@@ -78,6 +79,7 @@ const OBJECTS = [
     prompt: "When do you sanitize on a home visit?",
     intro: "The bottle is a reminder, not a quiz. Open each moment: arriving, after gloves come off, and before you leave.",
     complete: "You reviewed the three sanitizing moments: on entry, after gloves off, and before leaving. Nothing was scored.",
+    showModelLabels: false,
     hotspots: [
       {
         id: "entry",
@@ -114,9 +116,10 @@ const OBJECTS = [
     kit: "HHA infection-control kit",
     ready: true,
     modelPath: "assets/models/hospital-bed/scene.gltf",
-    prompt: "Find the bed rail and call pendant — both are high-touch.",
-    intro: "Rails and the call pendant are handled all day by the client, family, and staff. Open each point and read the coaching note.",
-    complete: "You noted the bed rail and call pendant as high-touch. Wipe them with the rest of the bedside. Nothing was scored.",
+    prompt: "Find the bed rails and headboard handles — both are high-touch.",
+    intro: "Rails and the headboard handles are gripped all day by the client, family, and staff. Open each point and read the coaching note.",
+    complete: "You noted the bed rails and headboard handles as high-touch. Wipe them with the rest of the bedside. Nothing was scored.",
+    showModelLabels: true,
     hotspots: [
       {
         id: "rail",
@@ -124,17 +127,17 @@ const OBJECTS = [
         label: "Bed rail",
         list: "Disinfect the bed rail.",
         coach: "Bed rails are high-touch. Clients grip them to turn, sit, and call for help. Wipe the full top rail and the inner face your hands actually hold.",
-        uvw: [0.1, 0.42, 0.5],
+        uvw: [0.12, 0.48, 0.72],
         pos2d: [28, 50]
       },
       {
-        id: "pendant",
+        id: "headboard",
         n: 2,
-        label: "Call pendant",
-        list: "Disinfect the call pendant.",
-        coach: "The call pendant (call bell) is a high-touch control. Clean the button and the length of cord the client holds. Do not skip it because it is small.",
-        uvw: [0.88, 0.55, 0.3],
-        pos2d: [78, 38]
+        label: "Headboard handles",
+        list: "Disinfect the headboard handles.",
+        coach: "The headboard cutouts are used to steer and reposition the bed. Wipe the inner edges of both handles, not only the outer panel.",
+        uvw: [0.5, 0.78, 0.12],
+        pos2d: [50, 18]
       }
     ]
   }
@@ -518,8 +521,17 @@ function renderDiagram(obj) {
 }
 
 function renderMarkers3d(obj) {
-  /* On-model numbered labels removed: coaching stays in the sidebar and list view. */
   els.markers3d.innerHTML = "";
+  if (!obj.showModelLabels) return;
+  obj.hotspots.forEach((h) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "marker";
+    b.setAttribute("data-hs", h.id);
+    b.setAttribute("aria-pressed", isNoted(obj, h) ? "true" : "false");
+    b.innerHTML = `<span class="marker-num">${h.n}</span><span class="marker-name">${h.label}</span>`;
+    els.markers3d.appendChild(b);
+  });
 }
 
 function disposeObject3D(root) {
@@ -624,6 +636,7 @@ function fitAndAnchor(obj, model) {
   Object.keys(pos).forEach((k) => {
     pos[k].y -= bottom;
   });
+  if (obj.showModelLabels) addAnchorSpheres(obj, pos);
   orbit.target.set(0, size2.y * 0.45, 0);
   orbit.dist = Math.max(2.4, size2.y * 2.4);
 }
