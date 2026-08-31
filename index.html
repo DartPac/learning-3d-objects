@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practice identifying high-touch points on a wheelchair, hand sanitizer, and hospital bed. Not a quiz. No grade is recorded.">
+  <title>3D learning objects — practice</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to activity</a>
+
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <p class="eyebrow">Home Health Aide · Infection-control kit</p>
+        <h1>3D learning objects — practice</h1>
+      </div>
+      <div class="topbar-actions">
+        <button type="button" class="text-btn" id="btn-credits">Credits</button>
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button type="button" class="text-btn" id="btn-3d" aria-pressed="false">3D</button>
+          <button type="button" class="text-btn" id="btn-2d" aria-pressed="false">2D</button>
+          <button type="button" class="text-btn" id="btn-list" aria-pressed="false">List</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="coaching" id="coaching" role="status" aria-live="polite" hidden></div>
+
+    <main id="main">
+      <section class="picker" id="picker" aria-labelledby="picker-title">
+        <p class="kicker">Practice · not a quiz</p>
+        <h2 id="picker-title">Choose an object to inspect</h2>
+        <p>
+          Orbit a 3D model, use a labeled diagram, or work from a list.
+          Open each hotspot and read the coaching note. Nothing is scored,
+          and nothing is sent to a gradebook.
+        </p>
+        <ul class="cards" id="object-cards"></ul>
+      </section>
+
+      <section class="activity" id="activity" hidden>
+        <div class="stage">
+          <div class="stage-bar">
+            <button type="button" class="text-btn" id="btn-back">All objects</button>
+            <h2 id="object-title">Object</h2>
+            <p class="stage-hint" id="stage-hint"></p>
+          </div>
+
+          <div class="view" id="view-3d">
+            <div
+              class="world-host"
+              id="world-host"
+              tabindex="0"
+              role="application"
+              aria-label="3D orbit viewer. Drag to rotate. Arrow keys or I J K L to orbit. Plus and minus to zoom. Tab to hotspots, then Enter or Space to open a coaching note."
+            >
+              <div class="markers" id="markers-3d"></div>
+              <div class="world-status" id="world-status" hidden>Loading 3D model…</div>
+            </div>
+            <p class="kbd-help" id="kbd-help">
+              Drag to orbit. Arrow keys or I J K L rotate. + / − zoom.
+              Pointer lock is optional. Click a numbered hotspot, or press Enter or Space when it is focused.
+            </p>
+          </div>
+
+          <div class="view" id="view-2d" hidden>
+            <div class="diagram" id="diagram-host"></div>
+          </div>
+
+          <div class="view list-view" id="view-list" hidden>
+            <h3 id="list-heading">Complete this object from the list</h3>
+            <p class="fine-print">This view does not need WebGL. Open every item. There is no score.</p>
+            <ol id="list-items"></ol>
+          </div>
+        </div>
+
+        <aside class="side" aria-labelledby="points-heading">
+          <h3 id="points-heading">Coaching points</h3>
+          <ul class="point-list" id="point-list"></ul>
+          <p class="detail" id="detail">Open a numbered point to read a coaching note. Color is not the only cue — each point has a number and a name.</p>
+          <p class="progress-note" id="progress-note" aria-live="polite"></p>
+          <p class="fine-print">Practice, not a quiz. No grade is recorded.</p>
+        </aside>
+      </section>
+    </main>
+
+    <div class="credits-overlay" id="credits-overlay" hidden>
+      <div class="credits-card" role="dialog" aria-modal="true" aria-labelledby="credits-title" id="credits-card">
+        <h2 id="credits-title">Credits</h2>
+        <p class="fine-print">CC-BY assets used in this activity. Links open the Sketchfab model page (not an embed).</p>
+        <ul class="credit-list" id="credit-list"></ul>
+        <div class="credits-block">
+          <h3>Engine</h3>
+          <p>Three.js r170 is vendored locally (MIT). No CDN is used at runtime.</p>
+        </div>
+        <button type="button" class="primary" id="btn-credits-close">Close</button>
+      </div>
+    </div>
+
+    <footer class="foot">
+      <p>
+        Ungraded Home Health Aide practice. Standard precautions in a private home.
+        Not a clinical protocol for every client.
+        <button type="button" class="linkish" id="btn-credits-foot">Credits</button>
+      </p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

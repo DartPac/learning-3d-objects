@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hand-sanitizer
+* source:	https://sketchfab.com/3d-models/hand-sanitizer-5ca4e17948fe40d1a73359116309ee1f
+* author:	Aarondraws8 (https://sketchfab.com/Aarondraws8)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hand-sanitizer" (https://sketchfab.com/3d-models/hand-sanitizer-5ca4e17948fe40d1a73359116309ee1f) by Aarondraws8 (https://sketchfab.com/Aarondraws8) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
